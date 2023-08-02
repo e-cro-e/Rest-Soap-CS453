@@ -14,7 +14,9 @@ docker-compose up
 This creates two containers the Rest server & the Soap server
 
 they can be reached at
+
 Rest: [http://localhost:3000/cars](http://localhost:3000/cars)
+
 Soap: [http://localhost:8000/soap](http://localhost:8000/soap)
 
 
@@ -64,4 +66,4 @@ Ensure node.js is installed
 
 to close the containers ctrl^c
 
-made by Ethan A. Thank:)
+made by Ethan A. Thanks:)
