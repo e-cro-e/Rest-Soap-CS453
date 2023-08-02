@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: Car Tracking API
+  description: API for managing car tracking system
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /cars:
+    get:
+      summary: Get all cars
+      description: Retrieve a list of all cars
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+    post:
+      summary: Add a new car
+      description: Add a new car to the system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '201':
+          description: Car added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+  /cars/{id}:
+    get:
+      summary: Get a car by ID
+      description: Retrieve a specific car by its ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the car
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+    put:
+      summary: Update a car
+      description: Update a specific car by its ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the car
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '200':
+          description: Car updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+    delete:
+      summary: Delete a car
+      description: Delete a specific car by its ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the car
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Car deleted successfully
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        id:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer

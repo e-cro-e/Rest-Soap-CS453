@@ -1,0 +1,42 @@
+<definitions
+  name="PartsService"
+  targetNamespace="http://example.com/parts-service"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="http://example.com/parts-service"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <message name="GetPartInfoRequest">
+    <part name="partNumber" type="xsd:string" />
+  </message>
+  <message name="GetPartInfoResponse">
+    <part name="price" type="xsd:float" />
+    <part name="deliveryDate" type="xsd:string" />
+  </message>
+  <portType name="PartsPort">
+    <operation name="GetPartInfo">
+      <input message="tns:GetPartInfoRequest" />
+      <output message="tns:GetPartInfoResponse" />
+    </operation>
+  </portType>
+  <binding name="PartsBinding" type="tns:PartsPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetPartInfo">
+      <soap:operation soapAction="http://example.com/parts-service#GetPartInfo" />
+      <input>
+        <soap:body use="encoded" namespace="http://example.com/parts-service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://example.com/parts-service" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PartsService">
+    <port name="PartsPort" binding="tns:PartsBinding">
+      <soap:address location="http://localhost:8000/soap" />
+    </port>
+  </service>
+</definitions>
