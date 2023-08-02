@@ -42,12 +42,25 @@ Getting cars
 ```shell
 curl -X GET --location "http://localhost:3000/cars"
 ```
+All paths can be found in the openapi.yaml
 
-##Soap
+## Soap
 
 again Postman was used but curl is also an option
 
+all paths can be found in the parts-service.wsdl
 
+Since this is a smaller project only 3 parts are coded in :
+```shell
+  'PART001': { price: 100, deliveryDate: '2023-08-10' },
+  'PART002': { price: 75, deliveryDate: '2023-08-05' },
+  'PART003': { price: 50, deliveryDate: '2023-08-15' },
+```
+
+
+## Notes
+
+Ensure node.js is installed
 
 to close the containers ctrl^c
 
